@@ -1,2 +1,4 @@
-.h1 Game#index
-.p TESTING
+%h1 Game#index
+- @games.each do |game|
+  %p
+    = link_to game.name, game_path(game)

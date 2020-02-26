@@ -60,12 +60,11 @@ class BggService
   end
 
   # TODO:
-  # decide - get all expansions for each relevant game
-  #   or only concern myself with expansions in my collection
+  # decided: only concern myself with expansions in my collection
   def sync_expansion_links
-    # Game.all.each do |game|
-    #   check
-    # end
+    Expansion.all.each do |exp|
+      
+    end
   end
 
   def http_request(url)

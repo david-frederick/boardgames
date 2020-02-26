@@ -1,5 +1,6 @@
 %h1
-  = @game.name
+  %a{ href: - @game.bgg_link }
+    = @game.name
 - @game.attributes.keys.each do |attr|
   %p
     %strong= attr.titlecase

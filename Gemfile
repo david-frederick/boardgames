@@ -28,7 +28,9 @@ gem 'bootsnap', '>= 1.4.2', require: false
 # ======== my actual stuff ==========
 
 gem 'awesome_print'
+gem 'draper'
 gem 'hamlit'
+gem 'haml-rails', '~> 2.0'
 gem 'nokogiri'
 gem 'pg'
 

@@ -1,2 +1,6 @@
 %h1
- = @game.name
+  = @game.name
+- @game.attributes.keys.each do |attr|
+  %p
+    %strong= attr.titlecase
+    = @game.send(attr)

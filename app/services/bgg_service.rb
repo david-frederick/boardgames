@@ -12,6 +12,7 @@ class BggService
   def sync_collection_data
     sync_game_data
     sync_expansion_data
+    sync_expansion_links
   end
 
   def sync_game_data
@@ -20,14 +21,21 @@ class BggService
     end
   end
 
+  # TODO:
+  # showprivate=1 will get you private info such as aquisition_date
   def game_data
-    url      = URI.parse("#{API_PATH}/collection?username=#{USERNAME}&stats=1&excludesubtype=boardgameexpansion")
-    response = http_request(url)
-    data     = Nokogiri::XML(response)
-    items    = data.xpath("//items//item")
+    items = unparsed_game_data
     items.map do |item|
       CollectionMappingService::GAME_ATTRS.inject({}) { |h, attr| h[attr[:attr]] = item.css(attr[:xpath]).first&.content; h }
     end
+  end
+
+  # keeping so I can manually see the api object
+  def unparsed_game_data
+    url      = URI.parse("#{API_PATH}/collection?username=#{USERNAME}&stats=1&excludesubtype=boardgameexpansion")
+    response = http_request(url)
+    data     = Nokogiri::XML(response)
+    data.xpath("//items//item")
   end
 
   def sync_expansion_data
@@ -37,13 +45,27 @@ class BggService
   end
 
   def expansion_data
-    url      = URI.parse("#{API_PATH}/collection?username=#{USERNAME}&stats=1&subtype=boardgameexpansion")
-    response = http_request(url)
-    data     = Nokogiri::XML(response)
-    items    = data.xpath("//items//item")
+    items = unparsed_expansion_data
     items.map do |item|
       CollectionMappingService::EXP_ATTRS.inject({}) { |h, attr| h[attr[:attr]] = item.css(attr[:xpath]).first&.content; h }
     end
+  end
+
+  # keeping so I can manually see the api object
+  def unparsed_expansion_data
+    url      = URI.parse("#{API_PATH}/collection?username=#{USERNAME}&stats=1&subtype=boardgameexpansion")
+    response = http_request(url)
+    data     = Nokogiri::XML(response)
+    data.xpath("//items//item")
+  end
+
+  # TODO:
+  # decide - get all expansions for each relevant game
+  #   or only concern myself with expansions in my collection
+  def sync_expansion_links
+    # Game.all.each do |game|
+    #   check
+    # end
   end
 
   def http_request(url)

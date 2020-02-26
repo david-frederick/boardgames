@@ -2,6 +2,8 @@ class Game < ApplicationRecord
   CLASS_MAPPING = CollectionMappingService::GAME_ATTRS
   include BggBacked
 
+  has_many :expansions
+
   scope :owned,        -> { where(own: true) }
   scope :wishlist,     -> { where(wishlist: true) }
   scope :preordered,   -> { where(preordered: true) }

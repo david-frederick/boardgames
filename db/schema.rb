@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_26_073227) do
+ActiveRecord::Schema.define(version: 2020_02_26_214141) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -37,6 +37,8 @@ ActiveRecord::Schema.define(version: 2020_02_26_073227) do
     t.integer "num_bgg_ratings"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "bgg_id", null: false
+    t.string "name"
     t.index ["game_id"], name: "index_expansions_on_game_id"
   end
 

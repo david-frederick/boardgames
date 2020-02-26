@@ -41,7 +41,7 @@ class Game < ApplicationRecord
       num_bgg_ratings:   api_obj['rating//usersrated/@value'],
       bgg_rank:          api_obj["rating//ranks//rank[name='boardgame']/@value"],
       bayes_avg:         api_obj["rating//ranks//rank[name='boardgame']/@bayesaverage"],
-      mediam:            api_obj['rating//median/@value'],
+      median:            api_obj['rating//median/@value'],
       std_dev:           api_obj['rating//stddev/@value']
     )
     game.save!

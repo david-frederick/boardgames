@@ -28,6 +28,7 @@ gem 'bootsnap', '>= 1.4.2', require: false
 # ======== my actual stuff ==========
 
 gem 'awesome_print'
+gem 'hamlit'
 gem 'nokogiri'
 gem 'pg'
 

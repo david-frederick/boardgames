@@ -28,11 +28,14 @@ gem 'bootsnap', '>= 1.4.2', require: false
 # ======== my actual stuff ==========
 
 gem 'awesome_print'
+gem 'bootstrap', '~> 4.4.1'
 gem 'draper'
 gem 'hamlit'
 gem 'haml-rails', '~> 2.0'
+gem 'jquery-rails'
 gem 'nokogiri'
 gem 'pg'
+gem 'sprockets-rails', require: 'sprockets/railtie'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]

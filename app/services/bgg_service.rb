@@ -59,12 +59,30 @@ class BggService
     data.xpath("//items//item")
   end
 
-  # TODO:
-  # decided: only concern myself with expansions in my collection
   def sync_expansion_links
-    Expansion.all.each do |exp|
-      
+    Expansion.without_association.each do |exp|
+      ap exp.name
+      data = thing_data(exp.bgg_id)
+      game_bgg_ids = data.css("//link[type='boardgameexpansion']/@id").map(&:value)
+      ap game_bgg_ids
+      game_bgg_ids.each do |game_id|
+        game = Game.where(bgg_id: game_id).first
+        next unless game
+        exp.game = game
+        exp.save
+      end
+      sleep(0.5)
     end
+  end
+
+  def thing_data(bgg_id)
+    unparsed_thing_data(bgg_id)
+  end
+
+  def unparsed_thing_data(bgg_id)
+    url = URI.parse("#{API_PATH}/thing?id=#{bgg_id}")
+    response = http_request(url)
+    Nokogiri::XML(response)
   end
 
   def http_request(url)

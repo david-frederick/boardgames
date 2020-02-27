@@ -1,6 +1,10 @@
 module BggBacked
   extend ActiveSupport::Concern
 
+  def bgg_thing_data
+    BggService.new.thing_data(bgg_id)
+  end
+
   module ClassMethods
 
     def upsert_from_api_obj!(api_obj)

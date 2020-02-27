@@ -3,4 +3,6 @@ class Expansion < ApplicationRecord
   include BggBacked
 
   belongs_to :game
+
+  scope :without_association, -> { where(game: nil) }
 end

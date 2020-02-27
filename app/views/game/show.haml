@@ -5,3 +5,10 @@
   %p
     %strong= attr.titlecase
     = @game.send(attr)
+%h3
+  Expansions
+%ul
+  - @expansions.each do |exp|
+    %li
+      %a{ href: - exp.bgg_link }
+        = exp.name

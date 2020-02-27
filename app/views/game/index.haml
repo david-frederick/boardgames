@@ -1,5 +1,15 @@
-%h1 Game#index
-%ul
-  - @games.each do |game|
-    %li
-      = link_to game.name, game_path(game)
+%h3 Games
+%table.table.table-striped.sortable
+  %thead
+    %tr
+      %th
+        Name
+      %th
+        Published
+  %tbody
+    - @games.each do |game|
+      %tr
+        %td
+          = link_to game.name, game_path(game)
+        %td
+          = game.year_published

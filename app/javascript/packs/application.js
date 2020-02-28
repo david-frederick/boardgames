@@ -17,6 +17,8 @@ require("channels")
 // const imagePath = (name) => images(name, true)
 
 // Bootstrap Installation
-require jquery3
-require popper
-require bootstrap-sprockets
+//= require jquery3
+//= require popper
+//= require bootstrap-sprockets
+//= require moment
+//= require bootstrap-sortable

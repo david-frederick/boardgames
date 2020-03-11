@@ -20,6 +20,26 @@ class GameController < ApplicationController
     @games = Game.wishlist.decorate
   end
 
+  def must_have
+    @games = Game.must_have.decorate
+  end
+
+  def love_to_have
+    @games = Game.love_to_have.decorate
+  end
+
+  def like_to_have
+    @games = Game.like_to_have.decorate
+  end
+
+  def considering
+    @games = Game.considering.decorate
+  end
+
+  def dont_want
+    @games = Game.dont_want.decorate
+  end
+
   def for_trade
     @games = Game.for_trade.decorate
   end

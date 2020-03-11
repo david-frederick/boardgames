@@ -5,22 +5,31 @@
     %span.navbar-toggler-icon
   %div.collapse.navbar-collapse#navbarSupportedContent
     %ul.navbar-nav.mr-auto
-      %li.nav-item.active
+      %li.nav-item
         %a.nav-link{ href: - game_index_path }
           All
-      %li.nav-item.active
+      %li.nav-item
         %a.nav-link{ href: - collection_path }
           Collection
-      %li.nav-item.active
+      %li.nav-item
         %a.nav-link{ href: - preorders_path }
           Preorders
-      %li.nav-item.active
-        %a.nav-link{ href: - wishlist_path }
+      %li.nav-item.dropdown
+        %a.nav-link.dropdown-toggle#navbarDropdown{ href: - wishlist_path, role: 'button', 'data-toggle': 'dropdown', 'aria-haspopup': 'true', 'aria-expanded': 'false' }
           Wishlist
-      %li.nav-item.active
+        %div.dropdown-menu{ 'aria-labelledby': 'navbarDropdown' }
+          %a.dropdown-item{ href: '#' }
+            Action
+          %a.dropdown-item{ href: '#' }
+            Another action
+          %div.dropdown-divider
+          %a.dropdown-item{ href: '#' }
+            Something else here
+
+      %li.nav-item
         %a.nav-link{ href: - for_trade_path }
           For Trade
-      %li.nav-item.active
+      %li.nav-item
         %a.nav-link{ href: - prev_owned_path }
           Sold
 

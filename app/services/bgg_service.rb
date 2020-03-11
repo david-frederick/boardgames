@@ -21,8 +21,6 @@ class BggService
     end
   end
 
-  # TODO:
-  # showprivate=1 will get you private info such as aquisition_date
   def game_data
     items = unparsed_game_data
     items.map do |item|
@@ -32,7 +30,7 @@ class BggService
 
   # keeping so I can manually see the api object
   def unparsed_game_data
-    url      = URI.parse("#{API_PATH}/collection?username=#{USERNAME}&stats=1&excludesubtype=boardgameexpansion")
+    url      = URI.parse("#{API_PATH}/collection?username=#{USERNAME}&stats=1&showprivate=1&excludesubtype=boardgameexpansion")
     response = http_request(url)
     data     = Nokogiri::XML(response)
     data.xpath("//items//item")
@@ -53,7 +51,7 @@ class BggService
 
   # keeping so I can manually see the api object
   def unparsed_expansion_data
-    url      = URI.parse("#{API_PATH}/collection?username=#{USERNAME}&stats=1&subtype=boardgameexpansion")
+    url      = URI.parse("#{API_PATH}/collection?username=#{USERNAME}&stats=1&showprivate=1&subtype=boardgameexpansion")
     response = http_request(url)
     data     = Nokogiri::XML(response)
     data.xpath("//items//item")
@@ -69,7 +67,7 @@ class BggService
         game = Game.where(bgg_id: game_id).first
         next unless game
         exp.game = game
-        exp.save
+        exp.save!
       end
       sleep(0.5)
     end

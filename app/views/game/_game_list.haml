@@ -1,0 +1,14 @@
+%table.table.table-striped
+  %thead
+    %tr
+      %th
+        Name
+      %th
+        Published
+  %tbody
+    - @games.each do |game|
+      %tr
+        %td
+          = link_to game.name, game_path(game)
+        %td
+          = game.year_published

@@ -8,11 +8,15 @@ module BggBacked
   module ClassMethods
 
     def upsert_from_api_obj!(api_obj)
-      game = self.find_or_initialize_by(bgg_id: api_obj['@objectid'])
+      thing = self.find_or_initialize_by(bgg_id: api_obj['@objectid'])
       self::CLASS_MAPPING.map{ |attr_obj| attr_obj[:attr] }.each do |attr|
-        game.send(:"#{attr}=", api_obj[attr])
+        thing.send(:"#{attr}=", api_obj[attr])
       end
-      game.save!
+      thing.save!
+    rescue ActiveRecord::RecordInvalid => e
+      ap e.message
+      puts e.backtrace
+      ap api_obj
     end
   end
 end

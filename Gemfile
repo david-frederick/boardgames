@@ -33,12 +33,14 @@ gem 'draper'
 gem 'hamlit'
 gem 'haml-rails', '~> 2.0'
 gem 'jquery-rails'
+gem 'mechanize'
 gem 'nokogiri'
 gem 'pg'
 gem 'sprockets-rails', require: 'sprockets/railtie'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  gem 'dotenv-rails'
   gem 'factory_bot'
   gem 'rspec-rails', '~> 4.0.0.beta'
 end

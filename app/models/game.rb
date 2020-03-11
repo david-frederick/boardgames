@@ -7,7 +7,7 @@ class Game < ApplicationRecord
   scope :owned,        -> { where(own: true) }
   scope :wishlist,     -> { where(wishlist: true) }
   scope :preordered,   -> { where(preordered: true) }
-  scope :for_trade,    -> { where(for_trade: true) }
+  scope :for_trade,    -> { where(fortrade: true) }
   scope :prevowned,    -> { where(prevowned: true) }
   scope :must_have,    -> { where(wishlist: true, wishlist_priority: 1) }
   scope :love_to_have, -> { where(wishlist: true, wishlist_priority: 2) }

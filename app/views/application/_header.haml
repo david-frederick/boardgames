@@ -6,11 +6,23 @@
   %div.collapse.navbar-collapse#navbarSupportedContent
     %ul.navbar-nav.mr-auto
       %li.nav-item.active
-        %a.nav-link{ href: - collection_index_path }
+        %a.nav-link{ href: - game_index_path }
+          All
+      %li.nav-item.active
+        %a.nav-link{ href: - collection_path }
           Collection
       %li.nav-item.active
-        %a.nav-link{ href: - game_index_path }
-          Games
+        %a.nav-link{ href: - preorders_path }
+          Preorders
+      %li.nav-item.active
+        %a.nav-link{ href: - wishlist_path }
+          Wishlist
+      %li.nav-item.active
+        %a.nav-link{ href: - for_trade_path }
+          For Trade
+      %li.nav-item.active
+        %a.nav-link{ href: - prev_owned_path }
+          Sold
 
     %form.form-inline.my-2.my-lg-0
       %input.form-control.mr-sm-2{ type: 'search', placeholder: 'Search', 'aria-label': 'Search' }
